@@ -1,4 +1,6 @@
+import os
 from storage import load_data, save_data
+from crypto_utils import setup, login
 
 def add_password():
     service = input("Service: ")
@@ -23,6 +25,10 @@ def show_passwords():
         print(entry["service"], entry["username"], entry["password"])
 
 def main():
+    if not os.path.isdir("data"):
+        setup()
+    else:
+        login()
     while True:
         print("\n1. Add password")
         print("2. Show passwords")
