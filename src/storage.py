@@ -11,5 +11,8 @@ def load_data():
         return json.load(f)
     
 def save_data(data):
+    if not os.path.isdir("data"):
+        os.mkdir("data")
+
     with open(DATA_FILE, "w") as f:
         json.dump(data, f, indent=4)
